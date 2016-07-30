@@ -1,0 +1,32 @@
+
+
+
+  <md-whiteframe class="md-whiteframe-z3 cloudmon-color" layout 
+   layout-align="center center"  style="margin: 3px ; padding: 5px; ">  
+   
+      <div layout="column" align="middle">     
+         <h4>  POC - DR Systems </h4>
+         <div><img src="{{ 1 |  geticonName}}" style="width:60px" /></div>  
+      </div>
+       <span flex></span>      
+     <div >    
+        <h4> Online  {{ 2 |  geticonName }} </h4>  
+     </div>
+     
+   </md-whiteframe>  
+   
+  
+  <md-whiteframe class="md-whiteframe-z3 cloudmon-color" layout 
+   layout-align="center center"  style="margin: 3px ; padding: 5px; ">  
+   
+     <div layout="column" align="middle">   
+      <h4>  RHEV  Clusters </h4> 
+      <div><img src="{{ 3 |  geticonName }}" style="width:60px" /></div>  
+     </div>
+     <span flex></span>       
+     <div  align="middle"  >    
+        <h4> Online </h4>  
+     </div>
+   </md-whiteframe>  
+   
+  

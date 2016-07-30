@@ -1,0 +1,23 @@
+
+Meteor.publish("cloudmon", function (options, searchString) {
+	
+console.log("SERVER:  from subscribe myteam .....")
+return MyTeam.find({});
+});
+
+Meteor.publish("clouds", function (options, searchString) {
+ return Clouds.find({}, {sort: {checkpointid: -1} });	
+//return Clouds.find({});
+//  return Teams.find({
+//     $or:[ {"player1": this.userId} ,
+//      {"player2": this.userId} ,
+//       {"player2": 'none'} ]
+//    });
+
+});
+
+Meteor.publish("cloudservices", function (options, searchString) {
+ return CloudServices.find({}, {sort: {checkpointid: -1} , reactive:true});
+	
+//return CloudServices.find({});
+});

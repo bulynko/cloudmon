@@ -1,0 +1,162 @@
+
+<md-content class="md-padding" style="background-color: #B0B0B0;">
+<div layout="column"  style="padding=20px; " >
+
+
+
+   
+<!--
+loginFlag: {{ loginFlag }} {{ currentUser | displayName }}
+-->
+
+<div layout="column"    ng-hide= "( ! currentUser ) ">     
+ <md-button  class="md-raised md-primary"   href="/cloudprivate" > Member </md-button>
+</div>
+
+ <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always"  md-selected="selectedIndex" >
+    <md-tab   >
+        <md-tab-label > Console
+             <md-icon md-svg-src="img/cloud-print-outline.svg"></md-icon>
+      </md-tab-label>
+    <md-tab-body layout="column" > 
+ <!-- {{  currentUser | displayName }} --> 
+
+      <md-input-container layout="column"> 
+
+  <md-radio-group ng-model="theproject" layout="raw"  style=" padding: 7px;  " >
+      <div class="myteam-color" ng-repeat="projectInfo in ['STATUS','RUN','LOG']"   layout="column"  >
+      <md-radio-button  ng-value="projectInfo"   layout="row" style=" padding-right: 10px;  " >      
+          {{ projectInfo }}   
+      </md-radio-button >      
+       </div>
+     </md-radio-group>
+        
+                
+  <div layout="column"  class="fade"   ng-hide= "(  theproject != 'STATUS' ) ">  
+     
+     
+ <md-whiteframe ng-repeat="cl in gclouds" class="md-whiteframe-z3 cloudmon-color" layout 
+   layout-align="center top"  style="margin: 3px ; padding: 5px;"  >  
+
+  <div style="padding-top: 20px"> 
+  <div class="bounceme" >
+   <img src="{{ cl.status|  geticonName}}" style="width:60px" />      
+  </div>   
+  </div>
+  
+     <div layout="column" align="middle"> 
+         <div align="left">
+            <h4>  {{ cl.code }} : {{ cl.name }}  </h4>  
+           </div>
+         <div>   {{ cl.checkpoint }}    {{ cl.description }}      </div>
+         <div>   {{ cl.install_msg  }} </div>
+         <div class="bigmessage">   {{ cl.install_progress }}% </div>
+     </div>     
+         <span flex></span>    
+     
+   <md-radio-group ng-model="theservice" layout="column"  style="padding: 7px;" > 
+   <div ng-repeat="gserv in gcloudServices"  layout="column"  >
+      <md-radio-button value=" {{ gserv }}" class="md-primary" ng-hide= "(  cl.code != gserv.cloud_code ) "> 
+      {{ gserv.code }}  {{ gserv.checkpoint  }}</md-radio-button>
+   </div>   
+ </md-radio-group>
+           
+ </md-whiteframe> 
+     
+     
+        
+    <div ng-app="" ng-include="'client/include/include_status.html'"></div>
+     </div>     
+        
+     <div layout="column"  class="fade"   ng-hide= "(  theproject != 'RUN' ) ">   
+       <div ng-app="" ng-include="'client/include/include_run.html'"></div>
+       </div>    
+    
+     <div layout="column"    ng-hide= "(  theproject != 'LOG' ) ">     
+       <div ng-app="" ng-include="'client/include/include_log.html'"></div>
+     </div>       
+  
+   </md-input-container>    
+   </md-tab-body> 
+   </md-tab>
+    
+
+    <!--2nd tab XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   -->
+    <md-tab  >
+      <md-tab-label> Login
+             <md-icon md-svg-src="img/cloud-download.svg"></md-icon>
+        </md-tab-label>
+      <md-tab-body>
+
+
+  
+
+ <md-input-container  layout="column"  >
+
+
+
+  
+    <md-whiteframe   class="md-whiteframe-z3" layout 
+   layout-align="center center"  style="margin: 3px ; padding: 5px;  " >  
+
+   
+   <form>      
+   <div layout="column">
+    <md-input-container  style="padding: 15px ">
+      <label>Login email</label>
+      <input ng-model="myuser.email"  type="email">
+    </md-input-container>
+    <md-input-container  style="padding: 15px ">
+      <label>Password</label>
+      <input ng-model="myuser.pass" type="password">
+    </md-input-container>
+    
+       <md-button class="md-raised md-primary"  ng-click="memberLogin(myuser)" >
+        MEMBER LOGIN </md-button>
+
+   <a><font color="red">{{ loginErrorMessage }} </font> </a>
+   </div>
+   </form>      
+        
+     </md-whiteframe >
+           
+    </md-input-container>       
+    </md-tab-body> 
+    </md-tab>    
+    
+    
+
+    <!--3rd tab XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   -->
+    <md-tab  >
+      <md-tab-label> Info
+             <md-icon md-svg-src="img/cloud-download.svg"></md-icon>
+        </md-tab-label>
+      <md-tab-body>
+
+      <md-input-container  layout="column"  >  
+       <md-whiteframe   class="md-whiteframe-z3" layout 
+         layout-align="center center"  style="margin: 3px ; padding: 5px;  " >  
+
+ 
+    <video width="80%" height="80%" id="video" controls> 
+       <source src="img/movie1.mp4" type="video/mp4">        
+       <source src="img/movie1.ogv" type="video/ogv"> 
+    </video> 
+        
+       </md-whiteframe >
+           
+    </md-input-container>       
+    </md-tab-body> 
+    </md-tab>        
+    
+ </md-tabs>
+
+
+ </div>    
+ </md-content >
+ 
+ 
+
+
+ 
+ 

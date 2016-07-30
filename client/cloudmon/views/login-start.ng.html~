@@ -1,0 +1,32 @@
+
+  <div class="sky">
+    <div class="moon"></div>
+    <div class="clouds_one"></div>
+    <div class="clouds_two"></div>
+    <div class="clouds_three"></div>
+     
+     
+    <div layout="column" style="padding-top: 20%" class="centre">
+
+<form>
+ 
+    <md-input-container  style="padding: 18px;" align="center" >
+      <label style="opacity:0.99 !important;">Access Code</label>
+      <input ng-model="myuser.code" type="password"  style="background-color:#FFFFFF !important;opacity:0.8 !important;">
+    </md-input-container>
+    <br/>
+    <a class="center"> <font color="red">{{ loginErrorMessage }} </font> </a>
+    <br/>    
+
+      <md-button class="md-raised md-primary center"  ng-click="userLoginButton(myuser);myuser.code=''" 
+       align="center"> LOGIN 
+              <md-icon md-svg-src="img/weather-lightning.svg" aria-label="Icon"></md-icon>
+       </md-button> 
+    
+</form>  
+</div>
+</div>
+
+<div style="opacity:0.4">
+ <a class="centre"  style="color:#FFFFFF" > <h2> GBM CLOUD LAB Team</h2> </a> 
+</div>

@@ -1,0 +1,119 @@
+
+<md-content class="md-padding">
+<div layout="column"  style="padding=20px; color: gray;" >
+
+   <md-button  class="md-raised md-primary"   href="/cloudprivate" > Member </md-button>
+
+
+ <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always"  md-selected="selectedIndex" >
+    <md-tab   >
+        <md-tab-label > Users
+             <md-icon md-svg-src="img/cloud-print-outline.svg"></md-icon>
+      </md-tab-label>
+      
+    <md-tab-body layout="column"> 
+    <div layout="column">
+    <md-input-container style="padding: 10px" >
+      <label>Login email</label>
+      <input ng-model="newuser.email"  type="email">
+    </md-input-container>
+
+    <md-input-container  style="padding: 10px">
+      <label>Password</label>
+      <input ng-model="newuser.password" type="password">
+    </md-input-container>
+
+    <md-input-container  style="padding: 10px">
+      <label>Password verification</label>
+      <input ng-model="newuser.password2" type="password">
+    </md-input-container>
+    
+    <a class="center"><font color="red">{{ registerErrorMessage }} </font> </a>
+  </div>
+  <div layout="row">  
+    <md-input-container  style="padding: 20px">
+      <md-button class="md-raised md-primary"  ng-click="registerUser(newuser)" 
+       align="center"> REGISTER </md-button> 
+    </md-input-container>
+
+
+        <md-checkbox ng-model="editUser" >
+          Edit Users: {{ editUser }}
+        </md-checkbox>
+
+  </div>   
+
+   <md-whiteframe ng-repeat="u in users " class="md-whiteframe-z3" layout 
+   layout-align="center center"  style="margin: 5px ; padding: 3px;">  
+   
+     <div> 
+      <h4> user :  {{ u | displayName}}    </h4> 
+ 
+      </div>   
+     <span flex></span>  
+     <div  align="right" ng-hide = "(  u.emails[0].address == 'cloudadmin@gbmme.com' ) || (! editUser)" >
+ 
+       <md-button class="md-raised md-primary"  ng-click="removeUser(u._id) " >X</md-button>   
+    
+      <md-button class="md-raised md-primary"  ng-click="changePassword(u._id,newuser)" 
+       align="center"> PSWD </md-button> 
+         
+      </div> 
+        
+    </md-whiteframe>   
+     
+    
+   </md-tab-body> 
+   </md-tab>
+    
+
+    <!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   -->
+    <md-tab  >
+      <md-tab-label> System
+             <md-icon md-svg-src="img/cloud-download.svg"></md-icon>
+        </md-tab-label>
+   
+     <md-tab-body>
+
+     <h3>  Settings ,  Alerts, .......</h3>  
+ 
+     <center> <h3 class="myteam-color"> TASK LIST </h3></center>
+
+   <md-whiteframe ng-repeat="t in alltasks" class="md-whiteframe-z3" layout 
+   layout-align="center center"  style="margin: 5px ; padding: 3px;">  
+   
+     <div> 
+      <h4>  {{ t.message }} id: {{ t.owner }}   </h4>
+     [ {{ t.msgtarget }} ]   {{ t.msgtime }}
+            
+      <md-radio-group ng-model="t.msgtarget"   layout="row" >
+      <div   ng-repeat="msgTarget in ['PUBLIC','PRIVATE','MEMBERS']"    layout="row" >
+      <md-radio-button  ng-value="msgTarget"  >      
+      </md-radio-button >      
+       </div>
+     </md-radio-group>     
+ 
+     </div>   
+      
+     <span flex></span>  
+     <div  align="right"  >
+       <md-button class="md-raised md-primary"  ng-click="removeRequest(t._id) " >X</md-button>   
+      </div> 
+        
+    </md-whiteframe>          
+   
+      
+    </md-tab-body> 
+    </md-tab>    
+    
+ </md-tabs>
+
+
+ </div>    
+ </md-content >
+ 
+ 
+
+
+ 
+ 
